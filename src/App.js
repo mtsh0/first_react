@@ -8,11 +8,11 @@ class App extends Component {
 
   onClickHandler = () => {
     // HelloWorld のh2タグを取得
-    let title = document.getElementById('versionStatement');
+    let title = document.getElementById('versionCounter');
     // upgrade のタグを取得
     let upgradeButton = document.getElementById('upgradeButton');
     // 取得したh2タグのテキストを変更する
-    title.textContent = "Hello World 4.0";
+    title.textContent = "4.0";
     // 取得したpタグを非表示にする
     upgradeButton.style.display = "none";
 
@@ -25,10 +25,11 @@ class App extends Component {
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
           <Title
-            title="Hello World 3.0"
             titleStyle={{ color: 'orange' }}
             onClick={this.onClickHandler}
-          />
+          >
+            Hello World <span id="versionCounter" style={{ borderBottom: '1px solid orange' }}>3.0</span>
+          </Title>
         </header>
         <p className="App-intro">
           To get started, edit <code>src/App.js</code> and save to reload.

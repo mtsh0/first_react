@@ -7,7 +7,7 @@ const Title = (props) => {
         style={props.titleStyle}
         id="versionStatement"
       >
-        {props.title}
+        {props.children}
       </h2>
       <p
         onClick={props.onClick}
