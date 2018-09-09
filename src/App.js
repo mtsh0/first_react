@@ -10,7 +10,7 @@ class App extends Component {
       <div className="App">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
-          <Title />
+          <Title title="Hello World 3.0" titleStyle={{ color: 'orange' }} />
         </header>
         <p className="App-intro">
           To get started, edit <code>src/App.js</code> and save to reload.
