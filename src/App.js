@@ -2,24 +2,31 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 
-import Title from './components/Title';
+import Title from './components/Title/Title';
 
 class App extends Component {
 
+  state = { version: '1.0' };
+
   onClickHandler = () => {
-    // HelloWorld のh2タグを取得
-    let title = document.getElementById('versionCounter');
-    // upgrade のタグを取得
-    let upgradeButton = document.getElementById('upgradeButton');
-    // 取得したh2タグのテキストを変更する
-    title.textContent = "4.0";
-    // 取得したpタグを非表示にする
-    upgradeButton.style.display = "none";
+    let nextVersion = parseInt(this.state.version, 10) + 1;
+
+    // stateはimuutableという性質があるため直接変更できない
+    // そのためsetStateを使うことにより新しい値を代入する
+    //Consoleを確認すると下記が表示される
+    //  Do not mutate state directory. Use setState()
+    //  (直接stateを変更するな、setState()を使え)
+    // this.state = {version: nextVersion.toFixed(1)};
+    this.setState({ version: nextVersion.toFixed(1) });
 
   }
 
 
   render() {
+    if (parseInt(this.state.version, 10) > 1) {
+      console.log('バージョン' + this.state.version);
+    }
+
     return (
       <div className="App">
         <header className="App-header">
@@ -28,7 +35,7 @@ class App extends Component {
             titleStyle={{ color: 'orange' }}
             onClick={this.onClickHandler}
           >
-            Hello World <span id="versionCounter" style={{ borderBottom: '1px solid orange' }}>3.0</span>
+            Hello World <span id="versionCounter" style={{ borderBottom: '1px solid orange' }}>{this.state.version}</span>
           </Title>
         </header>
         <p className="App-intro">
