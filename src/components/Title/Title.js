@@ -10,7 +10,7 @@ const Title = (props) => {
       >
         {props.children}
       </h2>
-      <p
+      {/* <p
         onClick={props.onClick}
         id="upgradeButton"
 
@@ -18,7 +18,7 @@ const Title = (props) => {
         className="upgrade-button"
       >
         Upgrade
-      </p>
+      </p> */}
     </div>
   )
 }

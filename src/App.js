@@ -23,9 +23,29 @@ class App extends Component {
 
 
   render() {
-    if (parseInt(this.state.version, 10) > 1) {
-      console.log('バージョン' + this.state.version);
+    // if (parseInt(this.state.version, 10) > 1) {
+    //   console.log('バージョン' + this.state.version);
+    // }
+    let upgradeButton = (
+      <p
+        onClick={this.onClickHandler}
+        id="upgradeButton"
+        // classではなく className!
+        className="upgrade-button"
+      >
+        Upgrade
+    </p>
+    );
+
+    if (this.state.version === '5.0') {
+      // ボタンを変更する
+      upgradeButton = (
+        <p className="upgraded-button">
+          Already up-to-date
+        </p>
+      );
     }
+
 
     return (
       <div className="App">
@@ -33,10 +53,18 @@ class App extends Component {
           <img src={logo} className="App-logo" alt="logo" />
           <Title
             titleStyle={{ color: 'orange' }}
-            onClick={this.onClickHandler}
           >
             Hello World <span id="versionCounter" style={{ borderBottom: '1px solid orange' }}>{this.state.version}</span>
           </Title>
+          {/* <p
+            onClick={this.onClickHandler}
+            id="upgradeButton"
+            // classではなく className!
+            className="upgrade-button"
+          >
+            Upgrade
+          </p> */}
+          {upgradeButton}
         </header>
         <p className="App-intro">
           To get started, edit <code>src/App.js</code> and save to reload.
